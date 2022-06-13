@@ -1,5 +1,5 @@
 {
-    "name": "stefano/keycloak-auth-php",
+    "name": "stefanopascazi/keycloak-auth-php",
     "description": "Beautifull and fast module for authenticate with OAuth2 use Keycloak.",
     "type": "library",
     "license": "MIT",
