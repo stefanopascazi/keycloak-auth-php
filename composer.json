@@ -12,6 +12,6 @@
         "name": "Stefano Pascazi",
         "email": "stefanopascazi@gmail.com"
     }],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {}
 }
