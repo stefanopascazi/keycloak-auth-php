@@ -1,0 +1,17 @@
+{
+    "name": "stefano/keycloak-auth-php",
+    "description": "Beautifull and fast module for authenticate with OAuth2 use Keycloak.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "KeycloakLibrary\\KeycloakAuthPhp\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Stefano Pascazi",
+        "email": "stefanopascazi@gmail.com"
+    }],
+    "minimum-stability": "stable",
+    "require": {}
+}
