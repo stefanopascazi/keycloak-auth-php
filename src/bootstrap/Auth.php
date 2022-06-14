@@ -94,7 +94,7 @@ class Auth implements IAuth
         }
 
         $client = HttpClient::create();
-        $response = $client->request("POST", $this->getTokenUrl, [
+        $response = $client->request("POST", $this->getLogoutUrl, [
             "body" => $formData
         ]);
 
