@@ -1,8 +1,9 @@
 <?php
 
-namespace KeycloakLibrary\KeycloakAuthPhp\Classes;
+namespace KeycloakLibrary\KeycloakAuthPhp\bootstrap;
+use KeycloakLibrary\KeycloakAuthPhp\Interface\IAccount;
 
-class Account
+class Account implements IAccount
 {
 
     protected array $config = [];
@@ -16,7 +17,7 @@ class Account
         $this->redirect = $redirect;
     }
 
-    public function getUrl()
+    public function getUrl() : string
     {
         $redirect = "";
         if( $this->redirect !== "" )

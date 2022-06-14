@@ -14,5 +14,12 @@
     }],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {}
+    "require": {
+        "php": ">=8.0.2",
+        "symfony/http-foundation": "v6.0.0",
+        "symfony/http-client": "v6.0.9"
+    },
+    "require-dev": {
+        "symfony/web-server-bundle": "v4.4.37"
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace KeycloakLibrary\KeycloakAuthPhp\Interface;
 
-interface KeycloakOIDC {
-
+interface IUser
+{
+    public function getInfo() : array;
 }
