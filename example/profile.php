@@ -9,16 +9,15 @@ require "../vendor/autoload.php";
 use KeycloakLibrary\KeycloakAuthPhp\Keycloak;
 
 Keycloak::init(
-    json_decode('{
-        "realm": "maggioli",
-        "auth-server-url": "https://sso-stage.maggioli.com/",
-        "ssl-required": "external",
-        "resource": "periodicimaggioli",
-        "credentials": {
-          "secret": "CEhnT8ljc5DBZyxCX1nvdKQxOyDqdTOF"
-        },
-        "confidential-port": 0
-      }', true), "http://localhost:5552/auth.php");
+  json_decode('{
+    "realm": "myrealm",
+    "auth-server-url": "https://your-keycloak-domain.com/",
+    "ssl-required": "external",
+    "resource": "myclient",
+    "public-client": true,
+    "confidential-port": 0
+}', true), "https://your-app-domain.com/auth.php");
+
 $data = Keycloak::user($_SESSION['access_token'])->getInfo();
 ?>
 <!doctype html>

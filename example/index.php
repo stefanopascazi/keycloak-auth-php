@@ -6,13 +6,13 @@ use KeycloakLibrary\KeycloakAuthPhp\Keycloak;
 
 Keycloak::init(
     json_decode('{
-        "realm": "myrealm",
-        "auth-server-url": "https://your-keycloak-domain.com/",
-        "ssl-required": "external",
-        "resource": "myclient",
-        "public-client": true,
-        "confidential-port": 0
-    }', true), "https://your-app-domain.com/auth.php");
+      "realm": "myrealm",
+      "auth-server-url": "https://your-keycloak-domain.com/",
+      "ssl-required": "external",
+      "resource": "myclient",
+      "public-client": true,
+      "confidential-port": 0
+  }', true), "https://your-app-domain.com/auth.php");
     
 ?>
 <!doctype html>
@@ -31,7 +31,7 @@ Keycloak::init(
                 <ul>
                     <?php if( isset($_SESSION['access_token']) ) : ?>            
                         <li><a href="/profile.php">Profile</a></li>
-                        <li><a href="<?php echo Keycloak::account("http://localhost:5552/")->getUrl(); ?>">Account</a></li>
+                        <li><a href="<?php echo Keycloak::account("https://your-app-domain.com/")->getUrl(); ?>">Account</a></li>
                         <li><a href="/logout.php">Logout</a></li>
                     <?php else : ?>
                         <li><a href="<?php echo Keycloak::auth()->createLoginString(); ?>">Login | Register</a></li>
