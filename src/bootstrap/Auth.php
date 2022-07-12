@@ -19,6 +19,8 @@ class Auth implements IAuth
 
     protected string $getLogoutUrl;
 
+    protected $getIntrospectUrl;
+
 
     public function __construct(array $config, string $redirect = "")
     {
@@ -32,6 +34,7 @@ class Auth implements IAuth
         $this->getTokenUrl = "{$this->config['auth-server-url']}realms/{$this->config['realm']}/protocol/openid-connect/token";
         $this->getUserinfoUrl = "{$this->config['auth-server-url']}realms/{$this->config['realm']}/protocol/openid-connect/userinfo";
         $this->getLogoutUrl = "{$this->config['auth-server-url']}realms/{$this->config['realm']}/protocol/openid-connect/logout";
+        $this->getIntrospectUrl = "{$this->config['auth-server-url']}realms/{$this->config['realm']}/protocol/openid-connect/token/introspect";
     }
 
     public function createLoginString( string $responsemode = "query" ) : string
@@ -74,6 +77,29 @@ class Auth implements IAuth
 
         $client = HttpClient::create();
         $response = $client->request("POST", $this->getTokenUrl, [
+            "body" => $formData
+        ]);
+
+        return $response->toArray();
+        
+    }
+
+    public function getIntrospection( string $code, bool $refresh = false ) : array
+    {
+        (array)$formData = [];
+
+        $formData = [
+            "client_id" => $this->config['resource'],
+            "token" => $code
+        ];
+
+        if( isset( $this->config['credentials'] ) )
+        {
+            $formData["client_secret"] = $this->config['credentials']['secret'];
+        }
+
+        $client = HttpClient::create();
+        $response = $client->request("POST", $this->getIntrospectUrl, [
             "body" => $formData
         ]);
 
